@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>URL History</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>URL History</h1>
+
+    <table>
+        <tr>
+            <th>Original URL</th>
+            <th>Short URL</th>
+        </tr>
+        {% for url in urls %}
+        <tr>
+            <td>{{ url.original_url }}</td>
+            <td>
+                <a href="/{{ url.short_code }}">
+                    {{ request.host_url }}{{ url.short_code }}
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <p><a href="/">Back to Home</a></p>
+</body>
+</html>
